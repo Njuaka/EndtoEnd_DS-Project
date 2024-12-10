@@ -1,0 +1,6 @@
+# ignore the folders and its contents
+
+data/
+notebooks/
+reports/
+agri_analyser.egg-info/
