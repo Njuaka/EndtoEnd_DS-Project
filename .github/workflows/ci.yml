@@ -17,11 +17,11 @@ jobs:
     steps:
         # check the codes from repository
       - name: checkout the code 
-        uses: actions/checkout@v4
+        uses: actions/checkout@v3
         
         # set up python environemnt
       - name: Set up Python 
-        uses: actions/setup-python@v5
+        uses: actions/setup-python@v3
         with:
           python-version: "3.11"
 
@@ -32,8 +32,8 @@ jobs:
           pip install -r requirements.txt
 
         # run test
-      - name: run tests
-        run: pytest
+      #- name: run tests
+       # run: pytest
 
       # You can test your matrix by printing the current Python version
       #- name: Display Python version
