@@ -27,10 +27,10 @@ def get_requirements(file_path:str) -> list[str]:
 setup(
     
 name='cropyieldproject',
-version='0.01',
+version='0.0.1',
 author='melvin',
 author_email='nnjuaka@gmail.com',
-packages=find_packages,
+packages=find_packages(),
 install_requires=get_requirements('requirements.txt')
 
 )
