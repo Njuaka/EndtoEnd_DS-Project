@@ -106,8 +106,8 @@ class TranformRawData:
             # Convert continent code to continent name
             continent_name = pc.convert_continent_code_to_continent_name(continent_code)
             return continent_name
-        except Exception as e:
-            raise CustomException(e,sys)
+        except:
+            return None
         
     def map_continent(self):
      # Apply the get_continent function to map countries to continents
@@ -185,9 +185,9 @@ class TrainEvaluateModels:
             y_pred = model.predict(self.X_test)
             mse = mean_squared_error(self.y_test, y_pred)
             mse_scores[name] = mse
-            model_path = os.path.join(MODELS_PATH, f"{name}.joblib")
-            joblib.dump(model, model_path)
-            print(f"{name} MSE: {mse}")
+            #model_path = os.path.join(MODELS_PATH, f"{name}.joblib")
+            #joblib.dump(model, model_path)
+            #print(f"{name} MSE: {mse}")
             
             
             # store results
@@ -211,10 +211,14 @@ class TrainEvaluateModels:
     def get_best_model(self):
         
         best_model_name = min([name for name in self.results.keys()], key=lambda x: self.results[x]['mse'])
-        best_model = self.results[best_model_name]
+        best_model = self.results[best_model_name]['model']
+        best_mse = self.results[best_model_name]['mse']
+        
+        model_path = os.path.join(MODELS_PATH, "model.joblib")
+        joblib.dump(best_model, model_path)
         return {
             'name': best_model_name,
-            'model': best_model['model'],
-            'mse': best_model['mse']
+            'model': best_model,
+            'mse': best_mse
         }
      
