@@ -1,6 +1,7 @@
+from src.utils import *
 from setuptools import find_packages, setup
 
-
+root_dir = get_root_directory()
 hyphen_e_dot = "-e ."
 
 def get_requirements(file_path:str) -> list[str]:
@@ -19,7 +20,7 @@ def get_requirements(file_path:str) -> list[str]:
         requirements = [req.replace("\n","") for req in requirements]
         
         if hyphen_e_dot in requirements:
-            requirements.remove()
+            requirements.remove(hyphen_e_dot)
             
     return requirements
 
