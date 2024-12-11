@@ -50,21 +50,27 @@ def main():
     
     # Train and Evaluate Model
     
-    rf_model = RfPredictionModel(transform_agric_data, features_column, target_column)
-    rf_model.train_and_evaluate()
-    model_results = rf_model.get_model_results()
+    model = TrainEvaluateModels(transform_agric_data, features_column, target_column)
+    best_model_name, best_model = model.train_and_evaluate()
+    
+    if best_model_name:
+    # Retrieve results for the best model
+        best_model_results = model.get_best_model()
+        print(f"Best Model: {best_model_results['name']}, MSE: {best_model_results['mse']}")
+        
+    
     
    
     
     # Generate reports based on user input
-    user_type = input("Enter user type (analyst or breeder): ")
+    #user_type = input("Enter user type (analyst or breeder): ")
     
-    report = Report(transform_agric_data)
-    report.generate(user_type=user_type)
+    #report = Report(transform_agric_data)
+    #report.generate(user_type=user_type)
     
-    plot = ModelPlot(model_results)
-    plot.plot_feature_importance()
-    plot.plot_actual_vs_actual()
+    #plot = ModelPlot(model_results)
+    #plot.plot_feature_importance()
+   # plot.plot_actual_vs_actual()
         
     
 if __name__=="__main__":

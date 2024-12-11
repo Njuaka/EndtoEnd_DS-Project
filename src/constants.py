@@ -1,4 +1,4 @@
-from utils import *
+from src.utils import *
 
 
 
@@ -12,3 +12,4 @@ PATH_TEMPERATURE_FILE = os.path.join(root_dir, "data", "temperature.csv")
 PATH_PESTICIDE_FILE = os.path.join(root_dir, "data", "pesticides_usage.csv")
 PATH_YIELD_FILE  = os.path.join(root_dir, "data", "yield.csv")
 FIGURE_PATH = os.path.join(root_dir, "reports/")
+MODELS_PATH = os.path.join(root_dir, "models")
