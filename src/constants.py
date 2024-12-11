@@ -1,4 +1,5 @@
 from src.utils import *
+from src.logger import logging
 
 
 
@@ -13,3 +14,5 @@ PATH_PESTICIDE_FILE = os.path.join(root_dir, "data", "pesticides_usage.csv")
 PATH_YIELD_FILE  = os.path.join(root_dir, "data", "yield.csv")
 FIGURE_PATH = os.path.join(root_dir, "reports/")
 MODELS_PATH = os.path.join(root_dir, "models")
+
+logging.info("all file path created")

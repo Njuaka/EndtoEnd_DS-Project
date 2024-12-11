@@ -1,4 +1,11 @@
 pandas
 numpy
+scikit-learn
+plotly_express
+pycountry
+joblib
+pycountry_convert
 
--e .
+
+
+#-e .

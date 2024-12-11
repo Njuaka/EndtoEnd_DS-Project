@@ -1,10 +1,14 @@
 import csv
 import pandas as pd
+import sys
+from src.logger import logging
+from src.exception import CustomException 
 
 def read_csv_file(csv_path: str, delimiter: str) -> pd.DataFrame:
     '''
     read csv files for yield and pesticide
     '''
+    logging.info("read the delimiter data")
     
     return pd.read_csv(csv_path, sep = delimiter)
 
@@ -25,6 +29,7 @@ def read_rain_file(csv_path: str, new_path)-> pd.DataFrame:
     '''
     
     with open(csv_path, 'r') as infile, open(new_path, 'w', newline='') as outfile:
+        logging.info("read the data file in a read format")
         reader = csv.reader(infile)
         writer = csv.writer(outfile)
         for row in reader:

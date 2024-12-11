@@ -1,9 +1,12 @@
 import os
+import sys
 import joblib
 import pandas as pd
 import pycountry
 import pycountry_convert as pc
 from typing import Dict
+from src.logger import logging
+from src.exception import CustomException
 from src.constants import MODELS_PATH
 from sklearn.metrics import mean_squared_error
 from sklearn.linear_model import LinearRegression
@@ -15,7 +18,7 @@ from sklearn.model_selection import train_test_split
 
 class InitialPreprocessingData:
     
-    def __init__(self, df, df1) -> None:
+    def __init__(self, df:pd.DataFrame, df1: pd.DataFrame) -> None:
         self.df = df
         self.df1 = df1  
         
@@ -40,7 +43,7 @@ class InitialPreprocessingData:
 
 
 
-def merge_data(df1, df2, list_columns):
+def merge_data(df1:pd.DataFrame, df2:pd.DataFrame, list_columns):
     '''
     the combine all the data by mering with id country
     and year
@@ -87,6 +90,7 @@ class renamedCombinedData:
 
 
 class TranformRawData:
+    logging.info("transformation initiated")
     
     def __init__(self, df: pd.DataFrame, column_name: str) -> None:
         self.df = df
@@ -102,8 +106,8 @@ class TranformRawData:
             # Convert continent code to continent name
             continent_name = pc.convert_continent_code_to_continent_name(continent_code)
             return continent_name
-        except:
-            return None
+        except Exception as e:
+            raise CustomException(e,sys)
         
     def map_continent(self):
      # Apply the get_continent function to map countries to continents
