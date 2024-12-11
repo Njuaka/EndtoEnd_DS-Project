@@ -10,7 +10,8 @@ data/
 notebooks/
 reports/
 agri_analyser.egg-info/
-models
+models/
+
 
 # Distribution / packaging
 .Python
