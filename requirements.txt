@@ -6,5 +6,6 @@ pycountry
 joblib
 pycountry_convert
 flask
+gunicorn
 
 #-e .
