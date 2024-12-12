@@ -60,8 +60,8 @@ jobs:
           context: .
           push: true
           tags: ${{ env.IMAGE_TAG }}
-          cache-from: type-gha
-          cache-to: type-gha, mode=max
+          cache-from: type=gha
+          cache-to: type=gha, mode=max
 
         # run test
       #- name: run tests
