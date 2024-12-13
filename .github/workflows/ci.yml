@@ -41,8 +41,8 @@ jobs:
       - name: google auth
         uses: 'google-github-actions/auth@v1'
         with:
-          credentials_json: '${{ secrets.GC_IMAGE_KEY }}'
-          
+          credentials_json: ${{ secrets.GC_IMAGE_KEY }}
+
        # Set up Google Cloud SDK
       - name: set up cloud sdk
         uses: 'google-github-actions/setup-gcloud@v1'

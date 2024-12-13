@@ -38,7 +38,7 @@ def predict_api():
     output=model.predict(new_data)
     print(output[0])
     return jsonify({'prediction': output[0]})
-#jsonify(output[0])
+
 
 @app.route('/predict', methods=['POST'])
 def predict():
