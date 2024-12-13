@@ -112,7 +112,7 @@ class TranformRawData:
     def map_continent(self):
      # Apply the get_continent function to map countries to continents
         self.df = self.df.assign(Continent=self.df['Country'].apply(self.get_continent))
-        #print(self.df.head())
+       
         return self.df
         
     
@@ -166,9 +166,6 @@ class TrainEvaluateModels:
         
         #print(f"Training and testing shapes: {self.X_train.shape}, {self.X_test.shape}, {self.y_train.shape}, {self.y_test.shape}")
 
-        # Build and fit the RandomForestRegressor model
-        #self.model = RandomForestRegressor(random_state=self.random_state)
-        #self.model.fit(self.X_train, self.y_train)
         if self.X_train is None or self.X_test is None:
             self.data_split()
         
@@ -185,9 +182,7 @@ class TrainEvaluateModels:
             y_pred = model.predict(self.X_test)
             mse = mean_squared_error(self.y_test, y_pred)
             mse_scores[name] = mse
-            #model_path = os.path.join(MODELS_PATH, f"{name}.joblib")
-            #joblib.dump(model, model_path)
-            #print(f"{name} MSE: {mse}")
+
             
             
             # store results
@@ -195,12 +190,7 @@ class TrainEvaluateModels:
                 'model': model,
                 'mse' : mse
             }
-        
-        # Predict and evaluate the model on the test set
-        #self.y_pred = self.model.predict(self.X_test)
-        #self.score = self.model.score(self.X_test, self.y_test)
-        #self.mse = mean_squared_error(self.y_test, self.y_pred)
-        #self.feature_importance = self.model.feature_importances_
+ 
         
         # select best model base on mse
         
@@ -215,7 +205,7 @@ class TrainEvaluateModels:
         best_mse = self.results[best_model_name]['mse']
         
         model_path = os.path.join(MODELS_PATH, "model.joblib")
-        joblib.dump(best_model, model_path)
+        joblib.dump(best_model, model_path, compress=3)
         return {
             'name': best_model_name,
             'model': best_model,

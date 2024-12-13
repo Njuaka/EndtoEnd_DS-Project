@@ -1,11 +1,12 @@
-pandas
-numpy
-scikit-learn
-plotly_express
-pycountry
-joblib
-pycountry_convert
-flask
-gunicorn
+pandas==2.2.3
+numpy==2.2.0
+scikit-learn==1.6.0
+plotly_express==0.4.1
+pycountry==24.6.1
+joblib==1.4.2
+pycountry_convert==0.7.2
+flask==3.1.0
+gunicorn==23.0.0
+pytest==8.3.4
 
 #-e .
